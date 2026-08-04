@@ -573,8 +573,43 @@ run_dashboard()
 
 ### Kiến Trúc Hệ Thống
 
-```
-[Vẽ diagram kiến trúc ở đây]
+```mermaid
+flowchart TD
+    subgraph Ingest["Thu thập dữ liệu (Task 1-2)"]
+        A1["Task 1: Văn bản pháp lý (PDF)<br/>data/landing/legal/"]
+        A2["Task 2: Crawl4AI news (JSON)<br/>data/landing/news/"]
+    end
+
+    B["Task 3: MarkItDown<br/>→ data/standardized/*.md"]
+
+    C["Task 4: Chunking + Indexing<br/>RecursiveCharacterTextSplitter (800/100)<br/>OpenAI text-embedding-3-small<br/>→ ChromaDB (chroma_db/)"]
+
+    subgraph Hybrid["Hybrid Retrieval"]
+        D["Task 5: Semantic Search<br/>dense + HyDE (cosine)"]
+        E["Task 6: Lexical Search<br/>BM25"]
+    end
+
+    F["Task 7: Reranking<br/>RRF fusion"]
+    G{"Điểm cosine gốc<br/>(Task 5) &lt; threshold?"}
+    H["Task 8: PageIndex<br/>Vectorless fallback"]
+    I["Task 9: retrieve()<br/>Unified pipeline"]
+    J["Task 10: Generation<br/>reorder (lost-in-middle) + citation"]
+    K["app.py<br/>Streamlit RAG Chatbot"]
+
+    A1 --> B
+    A2 --> B
+    B --> C
+    C --> D
+    C --> E
+    D --> F
+    E --> F
+    D -. "best score" .-> G
+    G -- "có, score thấp" --> H
+    G -- "không" --> I
+    F --> I
+    H --> I
+    I --> J
+    J --> K
 ```
 
 ---
@@ -583,8 +618,15 @@ run_dashboard()
 
 | Thành viên   | MSSV        | Nhiệm vụ      | Trạng thái |
 | -------------- | ----------- | --------------- | ------------ |
-| Lê Thành Nam | 2A202601397 | Task 4 + Task 5 | done         |
+| Lê Thành Nam | 2A202601397 | Task 4 + Task 5 | done |
+| Nguyễn Đặng Kỳ Anh | 2A202601501 | Task 7 + Task 8 | done |
+<<<<<<< HEAD
+| Chu Phú Thành  | 2A202601289 | Task 2 + Task 6 | done |
+| Phạm Thế Trung | 2A202601299 | Task 2 + Task 6 | done |
+=======
+| Nguyễn Việt Hùng| 2A202601275 | Task 3 + Task 8| done |
 |                |             |                 |              |
+>>>>>>> 0e6a7690b402551597a25f346c1763d5fce9a8f1
 |                |             |                 |              |
 |                |             |                 |              |
 
