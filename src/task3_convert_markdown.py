@@ -17,9 +17,15 @@ Hướng dẫn:
 """
 
 import json
+import sys
 from pathlib import Path
 
 from markitdown import MarkItDown
+
+# Console Windows mặc định dùng cp1252, không encode được ✓ -> ép UTF-8.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8")
 
 LANDING_DIR = Path(__file__).parent.parent / "data" / "landing"
 OUTPUT_DIR = Path(__file__).parent.parent / "data" / "standardized"
