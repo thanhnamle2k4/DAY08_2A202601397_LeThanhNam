@@ -573,8 +573,43 @@ run_dashboard()
 
 ### Kiến Trúc Hệ Thống
 
-```
-[Vẽ diagram kiến trúc ở đây]
+```mermaid
+flowchart TD
+    subgraph Ingest["Thu thập dữ liệu (Task 1-2)"]
+        A1["Task 1: Văn bản pháp lý (PDF)<br/>data/landing/legal/"]
+        A2["Task 2: Crawl4AI news (JSON)<br/>data/landing/news/"]
+    end
+
+    B["Task 3: MarkItDown<br/>→ data/standardized/*.md"]
+
+    C["Task 4: Chunking + Indexing<br/>RecursiveCharacterTextSplitter (800/100)<br/>OpenAI text-embedding-3-small<br/>→ ChromaDB (chroma_db/)"]
+
+    subgraph Hybrid["Hybrid Retrieval"]
+        D["Task 5: Semantic Search<br/>dense + HyDE (cosine)"]
+        E["Task 6: Lexical Search<br/>BM25"]
+    end
+
+    F["Task 7: Reranking<br/>RRF fusion"]
+    G{"Điểm cosine gốc<br/>(Task 5) &lt; threshold?"}
+    H["Task 8: PageIndex<br/>Vectorless fallback"]
+    I["Task 9: retrieve()<br/>Unified pipeline"]
+    J["Task 10: Generation<br/>reorder (lost-in-middle) + citation"]
+    K["app.py<br/>Streamlit RAG Chatbot"]
+
+    A1 --> B
+    A2 --> B
+    B --> C
+    C --> D
+    C --> E
+    D --> F
+    E --> F
+    D -. "best score" .-> G
+    G -- "có, score thấp" --> H
+    G -- "không" --> I
+    F --> I
+    H --> I
+    I --> J
+    J --> K
 ```
 
 ---
