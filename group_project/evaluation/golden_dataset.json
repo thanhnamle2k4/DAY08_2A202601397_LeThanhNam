@@ -1,17 +1,102 @@
 [
   {
-    "question": "Học phí hàng năm của chương trình Business tại RMIT Vietnam là bao nhiêu?",
-    "expected_answer": "Khoảng 375.840.000 VND mỗi năm (tùy chương trình cụ thể).",
-    "expected_context": "Trang Tuition Fees, mục Undergraduate Programs"
+    "question": "Học phí niêm yết theo năm học được hiểu là gì?",
+    "expected_answer": "Học phí niêm yết là mức học phí được ban hành theo khung chương trình chuẩn đã công bố tại thời điểm nhập học.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Học phí niêm yết"
   },
   {
-    "question": "Học phí được thanh toán theo hình thức nào?",
-    "expected_answer": "Thanh toán theo từng học kỳ, tính theo từng môn học đã đăng ký.",
-    "expected_context": "Trang Tuition Fees, mục Payment Structure"
+    "question": "Học phí niêm yết đã bao gồm những khoản nào?",
+    "expected_answer": "Học phí niêm yết đã bao gồm phí đào tạo, phí cơ sở vật chất, hệ thống CNTT hỗ trợ và hoạt động sinh viên.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Học phí niêm yết"
   },
   {
-    "question": "Trường có cung cấp ký túc xá trong khuôn viên không?",
-    "expected_answer": "Không — trường không cung cấp chỗ ở trong khuôn viên, nhưng có đội ngũ hỗ trợ sinh viên tìm chỗ ở gần trường.",
-    "expected_context": "Trang Accommodation Services"
+    "question": "Học phí niêm yết theo tín chỉ là bao nhiêu?",
+    "expected_answer": "Học phí niêm yết theo tín chỉ là 27.195.000 đồng cho mỗi tín chỉ.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Học phí niêm yết theo tín chỉ"
+  },
+  {
+    "question": "Sinh viên phải nộp học phí vào thời điểm nào trong năm học?",
+    "expected_answer": "Sinh viên đóng học phí theo hai đợt mỗi năm vào đầu các học kỳ chính, tối thiểu 14 ngày trước thời hạn theo quy định.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Thời hạn nộp học phí"
+  },
+  {
+    "question": "Học phí có phân biệt giữa sinh viên Việt Nam và sinh viên quốc tế không?",
+    "expected_answer": "Học phí áp dụng một mức chung cho sinh viên Việt Nam và sinh viên quốc tế.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Học phí niêm yết"
+  },
+  {
+    "question": "Sinh viên thanh toán học phí bằng hình thức nào?",
+    "expected_answer": "Sinh viên thanh toán học phí và các khoản phí bằng tiền Việt Nam Đồng qua thẻ ngân hàng tại địa điểm thu phí hoặc qua các kênh thanh toán do trường quy định.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Hình thức nộp học phí và các khoản phí"
+  },
+  {
+    "question": "Nếu sinh viên nộp học phí chậm thì bị xử lý như thế nào?",
+    "expected_answer": "Sinh viên không hoàn thành nghĩa vụ thanh toán đúng hạn phải nộp phí phạt thanh toán chậm 2.000.000 VNĐ và có thể bị hạn chế đăng ký môn học nếu tiếp tục chậm nộp.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục xử lý khi không hoàn thành nghĩa vụ thanh toán"
+  },
+  {
+    "question": "Sinh viên cần hoàn thành nghĩa vụ tài chính vào thời điểm nào để được xét tốt nghiệp?",
+    "expected_answer": "Sinh viên cần hoàn thành mọi nghĩa vụ tài chính trước khi được xét tốt nghiệp.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục nghĩa vụ tài chính trước xét tốt nghiệp"
+  },
+  {
+    "question": "Học phí có thay đổi trong suốt quá trình học không?",
+    "expected_answer": "Học phí không thay đổi trong suốt quá trình học, kể cả thời gian bảo lưu.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Chính sách điều chỉnh học phí và phí"
+  },
+  {
+    "question": "Khi nào sinh viên được hoàn trả 80% học phí thực nộp?",
+    "expected_answer": "Sinh viên được hoàn trả 80% học phí thực nộp khi thôi học trước ngày đầu tiên của khóa học hoặc học kỳ theo quy định.",
+    "expected_context": "data/standardized/legal/quy-dinh-tai-chinh.md, mục Hoàn trả học phí"
+  },
+  {
+    "question": "Một tín chỉ tương đương bao nhiêu giờ học định mức?",
+    "expected_answer": "Một tín chỉ tương đương 50 giờ học định mức của sinh viên, bao gồm giờ học trên lớp và thời gian tự học, chuẩn bị cá nhân.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 4 về Tín chỉ"
+  },
+  {
+    "question": "Khối lượng học tập toàn thời gian thông thường trong một năm học là bao nhiêu tín chỉ?",
+    "expected_answer": "Thông thường khối lượng học tập toàn thời gian là 30 tín chỉ trong một năm học.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 10 về đăng ký học phần"
+  },
+  {
+    "question": "Sinh viên chính quy cần đăng ký tối thiểu bao nhiêu tín chỉ để duy trì trạng thái toàn thời gian?",
+    "expected_answer": "Sinh viên phải đăng ký tối thiểu theo quy định của chương trình; tài liệu nêu mức tối thiểu trong mỗi kỳ chính và thông thường là ít nhất 14 tín chỉ cho mỗi học kỳ trong một số trường hợp.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 10 về khối lượng học tập"
+  },
+  {
+    "question": "Kỳ học hè cho phép đăng ký tối đa bao nhiêu tín chỉ?",
+    "expected_answer": "Kỳ học hè cho phép đăng ký tối đa 9 tín chỉ.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 10 về kỳ học hè"
+  },
+  {
+    "question": "Khi nào sinh viên phải xin đăng ký học vượt ngưỡng?",
+    "expected_answer": "Sinh viên phải xin đăng ký học vượt ngưỡng nếu năm thứ nhất muốn học nhiều hơn 18 tín chỉ, nếu không có thành tích tốt ở học kỳ trước nhưng muốn học nhiều hơn 18 tín chỉ, hoặc nếu muốn học nhiều hơn 22 tín chỉ trong kỳ học thông thường.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 10 về học vượt ngưỡng"
+  },
+  {
+    "question": "Điểm đỗ trong hệ thống điểm chữ là từ mức nào?",
+    "expected_answer": "Điểm đỗ là từ A đến D-, còn điểm trượt là F.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 25 Hệ thống điểm"
+  },
+  {
+    "question": "Điểm trung bình tích lũy tối thiểu để xét tốt nghiệp là bao nhiêu?",
+    "expected_answer": "Điểm trung bình tích lũy của toàn khóa học phải đạt tối thiểu 2,00 trên thang 4,00.",
+    "expected_context": "data/standardized/legal/quy-che-dao-tao-he-chinh-quy.md, Điều 28 Công nhận tốt nghiệp"
+  },
+  {
+    "question": "Tuyển sinh sau đại học được thực hiện theo phương thức nào?",
+    "expected_answer": "Tuyển sinh sau đại học được thực hiện theo phương thức xét tuyển; bậc thạc sĩ dựa trên đánh giá hồ sơ kết hợp phỏng vấn, bậc tiến sĩ dựa trên đánh giá hồ sơ và các yêu cầu chuyên môn tương ứng.",
+    "expected_context": "data/standardized/legal/quy-che-tuyen-sinh-sau-dai-hoc.md, Điều 2 Phương thức tuyển sinh sau đại học"
+  },
+  {
+    "question": "Thông báo tuyển sinh sau đại học phải được ban hành trước kỳ tuyển sinh bao lâu?",
+    "expected_answer": "Nhà trường ra thông báo tuyển sinh chậm nhất 30 ngày làm việc trước mỗi kỳ tuyển sinh.",
+    "expected_context": "data/standardized/legal/quy-che-tuyen-sinh-sau-dai-hoc.md, Điều 3 Thông báo tuyển sinh sau đại học"
+  },
+  {
+    "question": "Học bổng VinUni năm học 2026-2027 có những mức giá trị nào?",
+    "expected_answer": "Chương trình học bổng có nhiều mức, từ 50% học phí đến toàn phần; mức cao nhất hỗ trợ 100% học phí và sinh hoạt phí.",
+    "expected_context": "data/landing/news/article_01.json, bài VINUNI - HỌC BỔNG NĂM HỌC 2026-2027"
   }
 ]
