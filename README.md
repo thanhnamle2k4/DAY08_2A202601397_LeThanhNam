@@ -585,8 +585,8 @@ run_dashboard()
 | -------------- | ----------- | --------------- | ------------ |
 | Lê Thành Nam | 2A202601397 | Task 4 + Task 5 | done |
 | Nguyễn Đặng Kỳ Anh | 2A202601501 | Task 7 + Task 8 | done |
-|                |             |                 |              |
-|                |             |                 |              |
+| Chu Phú Thành  | 2A202601289 | Task 2 + Task 6 | done |
+| Phạm Thế Trung | 2A202601299 | Task 2 + Task 6 | done |
 |                |             |                 |              |
 |                |             |                 |              |
 
