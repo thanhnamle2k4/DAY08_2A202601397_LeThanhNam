@@ -618,12 +618,12 @@ flowchart TD
 
 | Thành viên           | MSSV        | Nhiệm vụ                                            | Trạng thái |
 | ---------------------- | ----------- | ----------------------------------------------------- | ------------ |
-| Lê Thành Nam         | 2A202601397 | Task 4 + Task 5                                       | done         |
+| Lê Thành Nam         | 2A202601397 | Task 4 + Task 5 + Yêu cầu 1                         | done         |
 | Nguyễn Đặng Kỳ Anh | 2A202601501 | Task 7 + Task 8                                       | done         |
 | Vũ Thành Dương     | 2A202602007 | Task 9, task 10, Yêu cầu 2: RAG Evaluation pipeline | done         |
 | Chu Phú Thành        | 2A202601289 | Task 2 + Task 6                                       | done         |
 | Phạm Thế Trung       | 2A202601299 | Task 2 + Task 6                                       | done         |
-| Nguyễn Việt Hùng     | 2A202601275 | Task 3 + Task 8                                       | done         |
+| Nguyễn Việt Hùng    | 2A202601275 | Task 3 + Task 8                                       | done         |
 
 ---
 
