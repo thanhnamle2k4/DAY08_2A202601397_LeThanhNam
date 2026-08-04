@@ -25,6 +25,8 @@ Logic:
     điểm số giữa hai nhóm rồi chọn ngưỡng nằm giữa.
 """
 
+from concurrent.futures import ThreadPoolExecutor
+
 from .task5_semantic_search import semantic_search
 from .task6_lexical_search import lexical_search
 from .task7_reranking import rerank, rerank_rrf
@@ -35,10 +37,38 @@ from .task8_pageindex_vectorless import pageindex_search
 # CONFIGURATION
 # =============================================================================
 
-# TODO: Calibrate threshold này bằng cách tự đo điểm cosine của semantic_search
-# cho câu hỏi liên quan vs câu hỏi lạc đề (xem ghi chú ở trên) — ĐỪNG copy nguyên
-# giá trị mẫu, mỗi corpus/embedding model sẽ cho khoảng điểm khác nhau.
-SCORE_THRESHOLD = 0.3   # Nếu best score (cosine gốc) < threshold → fallback PageIndex
+def _best_semantic_score(query: str) -> float:
+    results = semantic_search(query, top_k=1)
+    return float(results[0]["score"]) if results else 0.0
+
+
+def _calibrate_score_threshold() -> float:
+    relevant_queries = (
+        "học phí chương trình cử nhân là bao nhiêu",
+        "học bổng và hỗ trợ tài chính cho sinh viên",
+        "thời hạn ứng tuyển và tuyển sinh đại học",
+    )
+    irrelevant_queries = (
+        "xyzabc123nonsense",
+        "công thức nấu phở bò",
+        "lịch thi đấu bóng đá ngoại hạng anh",
+    )
+
+    try:
+        relevant_scores = [_best_semantic_score(query) for query in relevant_queries]
+        irrelevant_scores = [_best_semantic_score(query) for query in irrelevant_queries]
+    except Exception:
+        return 0.3
+
+    min_relevant = min(relevant_scores, default=0.0)
+    max_irrelevant = max(irrelevant_scores, default=0.0)
+    if min_relevant <= max_irrelevant:
+        return 0.3
+
+    return round((min_relevant + max_irrelevant) / 2, 4)
+
+
+SCORE_THRESHOLD = _calibrate_score_threshold()   # Nếu best score (cosine gốc) < threshold → fallback PageIndex
 DEFAULT_TOP_K = 5
 RERANK_METHOD = "rrf"  # "cross_encoder" | "mmr" | "rrf"
 
@@ -77,33 +107,42 @@ def retrieve(
             'source': str  # 'hybrid' hoặc 'pageindex'
         }
     """
-    # TODO: Implement full retrieval pipeline
-    #
-    # Step 1: Song song chạy semantic + lexical
-    # dense_results = semantic_search(query, top_k=top_k * 2)
-    # sparse_results = lexical_search(query, top_k=top_k * 2)
-    #
-    # Step 2: Merge bằng RRF
-    # merged = rerank_rrf([dense_results, sparse_results], top_k=top_k * 2)
-    # for item in merged:
-    #     item["source"] = "hybrid"
-    #
-    # Step 3: Rerank
-    # if use_reranking and merged:
-    #     final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
-    # else:
-    #     final_results = merged[:top_k]
-    #
-    # Step 4: Check threshold DÙNG ĐIỂM COSINE GỐC (dense_results), KHÔNG PHẢI RRF
-    # best_score = dense_results[0]["score"] if dense_results else 0.0
-    # if best_score < score_threshold:
-    #     print(f"  ⚠ Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
-    #     fallback = pageindex_search(query, top_k=top_k)
-    #     if fallback:
-    #         return fallback
-    #
-    # return final_results[:top_k]
-    raise NotImplementedError("Implement retrieve")
+    if not query or not query.strip() or top_k <= 0:
+        return []
+
+    candidate_k = max(top_k * 3, top_k)
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        dense_future = executor.submit(semantic_search, query, candidate_k)
+        sparse_future = executor.submit(lexical_search, query, candidate_k)
+        dense_results = dense_future.result()
+        sparse_results = sparse_future.result()
+
+    merged = rerank_rrf([dense_results, sparse_results], top_k=candidate_k)
+    for item in merged:
+        item["source"] = "hybrid"
+
+    if use_reranking and merged:
+        final_results = rerank(query, merged, top_k=top_k, method=RERANK_METHOD)
+        for item in final_results:
+            item["source"] = "hybrid"
+    else:
+        final_results = merged[:top_k]
+
+    best_score = dense_results[0]["score"] if dense_results else 0.0
+    if best_score < score_threshold:
+        print(f"  ⚠ Semantic best score ({best_score:.3f}) < threshold ({score_threshold})")
+        try:
+            fallback = pageindex_search(query, top_k=top_k)
+        except Exception as exc:
+            print(f"  ⚠ PageIndex fallback failed ({type(exc).__name__}): {exc}")
+        else:
+            if fallback:
+                for item in fallback:
+                    item["source"] = "pageindex"
+                return fallback[:top_k]
+
+    return final_results[:top_k]
 
 
 if __name__ == "__main__":
