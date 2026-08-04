@@ -583,7 +583,9 @@ run_dashboard()
 
 | Thành viên   | MSSV        | Nhiệm vụ      | Trạng thái |
 | -------------- | ----------- | --------------- | ------------ |
-| Lê Thành Nam | 2A202601397 | Task 4 + Task 5 | done         |
+| Lê Thành Nam | 2A202601397 | Task 4 + Task 5 | done |
+| Nguyễn Đặng Kỳ Anh | 2A202601501 | Task 7 + Task 8 | done |
+|                |             |                 |              |
 |                |             |                 |              |
 |                |             |                 |              |
 |                |             |                 |              |
