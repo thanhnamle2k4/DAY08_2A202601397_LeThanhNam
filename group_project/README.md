@@ -50,10 +50,10 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 ### Deliverable Evaluation
 
-- [ ] File `group_project/evaluation/golden_dataset.json` — 15+ cặp Q&A
-- [ ] File `group_project/evaluation/eval_pipeline.py` — script chạy evaluation
-- [ ] File `group_project/evaluation/results.md` — bảng điểm + phân tích
-- [ ] So sánh A/B ít nhất 2 configs
+- [X] File `group_project/evaluation/golden_dataset.json` — 15+ cặp Q&A
+- [X] File `group_project/evaluation/eval_pipeline.py` — script chạy evaluation
+- [X] File `group_project/evaluation/results.md` — bảng điểm + phân tích
+- [X] So sánh A/B ít nhất 2 configs
 
 ---
 
@@ -79,10 +79,12 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 | Thành viên | MSSV | Nhiệm vụ | Trạng thái |
 |-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Lê Thành Nam         | 2A202601397 | Task 4 + Task 5                                       | done         |
+| Nguyễn Đặng Kỳ Anh | 2A202601501 | Task 7 + Task 8                                       | done         |
+| Vũ Thành Dương     | 2A202602007 | Task 9, task 10, Yêu cầu 2: RAG Evaluation pipeline | done         |
+| Chu Phú Thành        | 2A202601289 | Task 2 + Task 6                                       | done         |
+| Phạm Thế Trung       | 2A202601299 | Task 2 + Task 6                                       | done         |
+| Nguyễn Việt Hùng     | 2A202601275 | Task 3 + Task 8                                       | done         |
 
 ---
 
