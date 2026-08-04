@@ -314,7 +314,7 @@ class TestTask6(unittest.TestCase):
         """lexical_search() trả về list."""
         search = self._import_task6()
         try:
-            results = search("tuition fee payment policy", top_k=3)
+            results = search("Chính sách thanh toán học phí", top_k=3)
             self.assertIsInstance(results, list)
         except NotImplementedError:
             self.skipTest("lexical_search chưa implement")
@@ -323,7 +323,7 @@ class TestTask6(unittest.TestCase):
         """Mỗi result có 'content', 'score'."""
         search = self._import_task6()
         try:
-            results = search("scholarship eligibility", top_k=3)
+            results = search("Chính sách học bổng", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả")
             for r in results:
@@ -336,7 +336,7 @@ class TestTask6(unittest.TestCase):
         """Kết quả sorted theo BM25 score descending."""
         search = self._import_task6()
         try:
-            results = search("library study room", top_k=5)
+            results = search("Phòng học thư viện", top_k=5)
             if len(results) < 2:
                 self.skipTest("Không đủ kết quả")
             scores = [r["score"] for r in results]
@@ -348,7 +348,7 @@ class TestTask6(unittest.TestCase):
         """Query có keyword match phải có score > 0."""
         search = self._import_task6()
         try:
-            results = search("tuition fee", top_k=3)
+            results = search("Học phí", top_k=3)
             if not results:
                 self.skipTest("Không có kết quả")
             # Ít nhất 1 result phải có score > 0
