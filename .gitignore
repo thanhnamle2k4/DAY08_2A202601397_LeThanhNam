@@ -18,6 +18,9 @@ data/_tmp_pdf/
 pageindex_doc_ids.json
 pageindex_pdfs/
 
+# Task 4: vector store sinh ra khi chạy, không commit
+chroma_db/
+
 # IDE
 .vscode/
 .idea/
